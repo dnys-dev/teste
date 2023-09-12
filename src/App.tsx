@@ -1,14 +1,11 @@
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { Home } from "./pages/Home";
-import { Store } from "./pages/Store";
-import { About } from "./pages/About";
-import ProductDetails  from "./pages/ProductDetails";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
+import { APIContextProvider } from "./context/AllProducts";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import "./globals.css";
-import { ProductItemProps } from "./components/ProductItem";
-import { APIContextProvider } from "./context/AllProducts";
+import ProductDetails from "./pages/ProductDetails";
+import { Store } from "./pages/Store";
 
 function App() {
   return (
@@ -16,15 +13,14 @@ function App() {
       <ShoppingCartProvider>
         <Navbar />
         <Container className="mb-4">
-     
+        <Router/>
             <Routes>
               <Route path="/" element={<Store />} />
               {/* <Route path="/home" element={<Home />} /> */}
               <Route path="/productdetails/:id" element={<ProductDetails />} />
               {/* <Route path="/about" element={<About />} /> */}
             </Routes>
-     
-          {/* <Router/> */}
+          <Router/>
     
         </Container>
       </ShoppingCartProvider>
